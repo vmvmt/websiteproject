@@ -1,0 +1,402 @@
+<!--
+    Only the about page works
+
+    todo:
+    JQuery sidebar animation
+    article.textContent setting with JQuery
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto%20Mono' rel='stylesheet'>
+    <title>Vili's website</title>
+</head>
+<style>
+    #quote{
+        display: block;
+        font-style: italic; 
+        font-size: 10px;
+        text-align: center;
+    }
+</style>
+
+
+<body>
+
+    <header>
+        <p style="font-style: italic; font-size: 66%; position: absolute; left: 0; top: 0; margin: 0;">My Umszki project
+        </p>
+
+        <h1>Compilers</h1>
+    </header>
+
+    <div>
+        <nav>
+            <a style="font-size: 1em;" class="active">About compilers</a>
+            <a>How they work</a>
+        </nav>
+        <main>
+            <q id="quote">computers are flattened sand with lightning inside</q>
+            <div class="paragraph">
+                <h2 style="text-align: right;">1. Introduction</h2>
+                <strong> Programming languages were created to allow developers to write human-readable source
+                    code.</strong>
+                However,
+                computers work with machine code, which people can hardly write or read. Thus, compilers translate the
+                programming language’s source code to machine code dedicated to a specific machine.<p>
+                    In this article, we’ll analyze the compilation process phases. Then, we’ll see the differences
+                    between
+                    compilers and interpreters. Finally, we’ll introduce examples of a few compilers of modern
+                    programming
+                    languages.</p>
+            </div>
+
+            <div class="paragraph">
+                <h2 style="text-align: right;">2. Compilation Phases</h2>
+                As we already mentioned, the compilation process <em>converts high-level source code to a low-level
+                    machine
+                    code</em>
+                that can be executed by the target machine. Moreover, an essential role of compilers is to inform the
+                developer about errors committed, especially syntax-related ones.
+                <p>
+                    The compilation process consists of several phases:
+                </p>
+                <ul>
+                    <li>Lexical analysis</li>
+                    <li>Syntax analysis</li>
+                    <li>Semantic analysis</li>
+                    <li>Intermediate code generation</li>
+                    <li>Optimization</li>
+                    <li>Code generation</li>
+                </ul>
+                In this section, we’ll discuss each phase in detail.
+            </div>
+
+            <div class="paragraph">
+                <h3 style="text-align: right;">2.1. Lexical Analysis</h3>
+
+                The first stage of the compilation process is lexical analysis. During this phase, the compiler splits
+                source code into fragments called lexemes. A lexeme is an abstract unit of a specific language’s lexical
+                system. Let’s analyze a simple example:<br>
+                <code
+                    style="border-left:3px solid rgb(255, 255, 255);padding: 2px;background-color:rgb(70, 70, 70); color: white; display: inline-block; margin: 5px;">
+                    String greeting = "hello";
+                </code>
+                <p>
+                    In the above statement, we have five lexemes:</p>
+                <ol>
+                    <li>String</li>
+                    <li>greeting</li>
+                    <li>=</li>
+                    <li>“hello”</li>
+                    <li>;</li>
+                </ol>
+                <p>
+                    After splitting code into lexemes, a sequence of tokens is created. The sequence of tokens is a
+                    final product of lexical analysis. Thus, lexical analysis is also often called tokenization.
+                    <strong> A
+                        token
+                        is an object that describes a lexeme.</strong> It gives information about the lexeme’s purpose,
+                    such as
+                    whether it’s a keyword, variable name, or string literal. Moreover, it stores the lexeme’s
+                    source
+                    code location data.
+                </p>
+            </div>
+            <div class="paragraph">
+                <h3 style="text-align: right;">2.2. Syntax Analysis</h3>
+
+                During syntax analysis, the compiler uses a sequence of tokens generated in the first stage. Tokens are
+                used to create a structure called an <a
+                    href="https://www.baeldung.com/java-build-compiler-plugin#extract-ast-data">abstract syntax tree
+                    (AST)</a>, which is a tree that represents the
+                logical structure of a program.
+                <p>
+                    In this phase, the compiler checks a grammatic structure of the source code and its syntax
+                    correctness.
+                    Meanwhile, any syntax errors result in a compilation error, and the compiler informs the developer
+                    about
+                    them.
+                </p>
+                <p>
+                    In brief, syntax analysis is responsible for two tasks:
+                </p>
+                <ol>
+                    <li>It checks source code for any syntax error.</li>
+                    <li>
+                        It generates an abstract syntax tree that the next stage uses.
+                    </li>
+                </ol>
+            </div>
+            <div class="paragraph">
+                <h3 style="text-align: right;">2.3. Semantic Analysis</h3>
+
+                <b>In this stage, the compiler uses an abstract syntax tree to detect any semantic errors,</b> for
+                example:
+                <ul>
+                    <li>assigning the wrong type to a variable</li>
+                    <li>declaring variables with the same name in the same scope</li>
+                    <li>using an undeclared variable</li>
+                    <li>using language’s keyword as a variable name</li>
+                </ul>
+                <p>Semantic analysis can be divided into three steps:</p>
+                <ol>
+                    <li>Type checking – inspects type match in assignment statements, arithmetic operations, functions,
+                        and
+                        method
+                        calls.</li>
+                    <li>Flow control checking – investigates if flow control structures are used correctly and if
+                        classes and
+                        objects are correctly accessed.</li>
+                    <li>Label checking – validates the use of labels and identifiers.</li>
+                </ol>
+                <p>
+                    To achieve all the above goals, during semantic analysis, the compiler makes a complete traversal of
+                    the
+                    abstract syntax tree. Semantic analysis finally produces an annotated AST that describes the values
+                    of
+                    its
+                    attributes.</p>
+            </div>
+
+            <div class="paragraph">
+                <h3 style="text-align:right;">2.4. Intermediate Code Generation</h3> During the compilation process, a
+                compiler can generate one or more
+                intermediate code forms.
+                <q
+                    style="font-size:x-large; margin: 20px;padding: 5px; display: block; border-left: 3px solid rgb(70, 70, 70);">After
+                    syntax and
+                    semantic analysis of the source program, many compilers
+                    generate an explicit low-level or machine-like intermediate representation, which we can think of as
+                    a program for an abstract machine. This intermediate representation should have two important
+                    properties: it should be easy to produce and it should be easy to translate into the target
+                    machine.” – Compilers. Principles, Techniques, & Tools. Second Edition. Alfred V. Aho. Columbia
+                    University. Monica S. Lam. Stanford University. Ravi Sethi. Avaya.</q>
+                <strong>Intermediate code is
+                    machine-independent.</strong> Thus, there is no need for unique compilers for every different
+                machine.
+                Besides, optimization techniques are easier to apply to intermediate code than machine code.
+                Intermediate code has two forms of representation:
+                <ol>
+                    <li>
+                        High-Level – similar to the source language. In
+                        this form, we can easily boost the performance of source code. However, it’s less preferred for
+                        enhancing the performance of the target machine.
+                    </li>
+                    <li>
+                        Low-Level – close to the machine’s machine code.
+                        It’s preferred for making machine-related optimizations.
+                    </li>
+                </ol>
+
+            </div>
+
+            <div class="paragraph">
+                <h3 style="text-align: right;">
+                    2.5. Optimization
+                </h3>
+                <em><strong>In the optimization phase, the compiler uses a variety of ways to enhance the efficiency of
+                        the
+                        code.</strong></em>
+                Certainly, the optimization process should follow three important rules:
+                <ol>
+                    <li>
+                        The resulting code can’t change the original meaning of the program.
+                    </li>
+                    <li>
+                        Optimization should focus on consuming fewer resources and speeding up the operation of the
+                        software.
+                    </li>
+                    <li>
+                        The optimization process shouldn’t significantly impact the overall time of compilation.
+                    </li>
+                </ol>
+                <p>
+                    Let’s see a few examples of optimization techniques:
+                </p>
+                <ol>
+                    <li>
+                        Function inlining – replacing the function call with its body.
+                    </li>
+                    <li>
+                        Dead code elimination – compiler gets rid of code that is never executed, or if executed, its
+                        returned
+                        result isn’t used.
+                    </li>
+                    <li>
+                        Loop fusion – executing, in one loop, operations from the adjacent loops that have the same
+                        iteration
+                        conditions.
+                    </li>
+                    <li>
+                        Instruction combining – instructions realizing similar operations are combined into one; for
+                        example, x = x
+                        + 10; x = x – 7; could be replaced with x = x + 3;
+                    </li>
+                </ol>
+            </div>
+
+            <div class="paragraph">
+                <h3 style="text-align: right;">2.6. Code Generation</h3>
+
+                Finally, the compiler converts the optimized intermediate code to the machine code dedicated to the
+                target
+                machine. The final code should have the same meaning as source code and be efficient in terms of
+                memory and
+                CPU resource usage. Furthermore, the code generation process must also be efficient.
+            </div>
+
+            <div class="paragraph">
+                <h3 style="text-align: right;">2.7. Practical Example</h3>
+
+                In the below flowchart, we can see an example of the compilation process of a simple statement.
+                <div style="text-align: center;">
+                    <img src="res/Compilation_Flow.png" style="max-width: 100%; height: auto;" alt="Compilation Flow">
+                </div>
+
+            </div>
+            <div class="paragraph">
+
+                <h2 style="text-align: right;">3. Compiler vs. Interpreter</h2>
+
+                As we already know, the compiler converts high-level source code to low-level code. Then, the target
+                machine
+                executes low-level code. On the other hand, <strong>the interpreter analyzes and executes source code
+                    directly.</strong>An
+                interpreter usually uses one of several techniques:
+                <ol>
+                    <li>
+                        Analyzes (parses) the source code and executes it directly.
+                    </li>
+                    <li>
+                        Converts high-level source code into intermediate code and executes it immediately.
+                    </li>
+                    <li>
+                        Explicitly executes stored precompiled code generated by a compiler. In this case, the compiler
+                        belongs to
+                        the interpreter system.
+                    </li>
+                </ol>
+                <p>
+                    Let’s see a brief comparison between an interpreter and a compiler:
+                </p>
+                <table>
+                    <tr style="text-decoration: underline;">
+                        <td>COMPILER:</td>
+                        <td>INTERPRETER:</td>
+                    </tr>
+                    <tr>
+                        <td>1. Converts the code but doesn’t execute it.</td>
+                        <td>1. Executes code directly.</td>
+                    </tr>
+                    <tr>
+                        <td>2. Implementing a compiler requires knowledge about the target machine.</td>
+                        <td>2. No need for knowledge
+                            about the
+                            target machine, since an interpreter executes the code.</td>
+                    </tr>
+                    <tr>
+                        <td>3. Each instruction is translated only once.</td>
+                        <td>3. The same instruction can be analyzed multiple times.</td>
+                    </tr>
+                    <tr>
+                        <td>4. The compiled program is faster to run.</td>
+                        <td>4. Interpreted programs are slower to run, but take less
+                            time to
+                            interpret than to compile and run.</td>
+                    </tr>
+                    <tr>
+                        <td>5. Consumes more memory due to intermediate code generation.</td>
+                        <td>5. Usually executes input code
+                            directly, thus
+                            it consumes less memory.</td>
+                    </tr>
+                    <tr>
+                        <td>6. Compiled language examples: Java, C++, Swift, C#.</td>
+                        <td>6. Interpreted language examples: Ruby, Lisp,
+                            PHP,
+                            PowerShell.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="paragraph">
+                <h3 style="text-align: right;">4. Compiler Examples</h3>
+
+                <h4 style="font-style: oblique;">4.1. Javac</h4>
+                <p>
+                    In Java, source code is first compiled to the bytecode by the javac compiler. Then, a Java Virtual
+                    Machine
+                    (JVM) interprets and executes bytecode. So, javac is an excellent example of a compiler that belongs
+                    to an
+                    interpreter system. Such a system makes Java portable and multiplatform.
+                </p>
+                <p>
+                    Moreover, there are other languages like Kotlin or Scala that are also compiled to bytecode, but
+                    these use
+                    unique compilers. Thus, the JVM can execute code that was originally written using different
+                    technologies.
+                </p>
+
+                <h4 style="font-style: oblique;">4.2. Mono</h4>
+                <p>
+                    <a href="https://www.mono-project.com">Mono</a> is a toolset, including a C# programming language
+                    compiler, for executing software dedicated to
+                    the
+                    .NET Platform. It was created to allow .NET applications to run on different platforms. Moreover, an
+                    important goal was to give developers working on Linux a better environment and tools for working
+                    with the
+                    .NET platform.
+                </p>
+                <p>
+                    A compiler converts C# source code into an intermediate bytecode. After that, the virtual machine
+                    executes
+                    it. Both the C# compiler and virtual machine belong to the Mono toolset.
+                </p>
+
+                <h4 style="font-style: oblique;">4.3. GNU Compiler Collection</h4>
+                <p>
+                    The GNU Compiler Collection (GCC) is a set of open-source compilers that belong to the GNU Project.
+                    These
+                    compilers could run on different hardware and software platforms. Therefore, they can generate
+                    machine code
+                    for various architectures and operating systems.
+                </p>
+                <p>
+                    During compilation, GCC is responsible for processing arguments, calling the compiler for the
+                    specific
+                    programming language, running the assembler program, and eventually, running a linker to produce an
+                    executable binary.
+                </p>
+                <p>
+                    GCC consists of compilers for several programming languages:
+                </p>
+                <ul>
+                    <li>C (gcc)</li>
+                    <li>C++ (g++)</li>
+                    <li>Objective-C (gobjc)</li>
+                    <li>Fortran (g77 and GFortran)</li>
+                    <li>Java (gcj)</li>
+                    <li>Ada (gnat)</li>
+                </ul>
+
+                <a style="display: block; text-align: center;">To be continued...</a>
+            </div>
+        </main>
+        <div class="right">
+            reserved
+        </div>
+    </div>
+
+    <footer>
+        <a style="font-style :italic; font-size: 66%; justify-self:right;    margin: 0;">Vilmos Nargang</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

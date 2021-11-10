@@ -1,0 +1,131 @@
+body
+{
+    background-color: rgb(200, 200, 200);
+    font-family: 'Roboto Mono', Courier, monospace;
+    margin: 0;
+    font-size: 1.0em;
+    background-color: rgb(180, 180, 180);
+}
+
+a:link{
+    text-decoration: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+header
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vw;
+}
+header h1
+{
+    margin: 0;
+
+}
+
+header::before
+{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    opacity: 0.4;
+    background-size: cover;
+    background-image: url("./res/header.jpeg");
+    width:auto;
+    height:auto;
+    z-index:-3;
+}
+
+main
+{
+    
+    border-left: 1px solid rgb(70, 70, 70);
+    border-right: 1px solid rgb(70, 70, 70);
+    background-color: rgb(220, 220, 220);
+    float: left;
+    height: 100%;
+    width:70%;
+    padding: 5px;
+}
+main #quote{
+    text-align: center;
+}
+
+nav a.active
+{
+    color: white;
+    background-color: rgb(100, 100, 100);
+}
+nav a:hover:not(.active)
+{
+    background-color: rgb(140, 140, 140);
+}
+
+nav
+{
+    float: left;
+    overflow: hidden;
+    margin: 0;
+    text-align: center;
+    width: 15%;
+    height: 100%;
+}
+
+nav a
+{
+    font-size: 0.8em;
+    float: none;
+    overflow: hidden;
+    display: block;
+    padding: 20px;
+}
+    
+.right
+{
+    float:left;
+    text-align: right;
+    height: 100%;
+    width:15%;
+    padding: 5px;
+}
+footer
+{
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    height: 6vw;
+    background-color: rgb(35, 35, 35);
+}
+
+.paragraph
+{
+    padding: 5px 6px;
+    display: block;
+}
+
+table td{
+    padding: 5px;
+    width: 50%;
+    margin: 0;
+}
+table tr{
+    vertical-align: top;
+}
+
+footer::after
+{
+    content: "";
+    display: table;
+    clear: both;
+}
