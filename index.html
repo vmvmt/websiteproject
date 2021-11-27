@@ -20,30 +20,35 @@
     #quote{
         display: block;
         font-style: italic; 
-        font-size: 10px;
+        font-size: 13px;
         text-align: center;
     }
+    #tobecontinued{
+        display: block;
+        text-align: center;
+        font-weight: bold;
+    }
 </style>
-
-
 <body>
+<div class="grid-container">  
 
-    <header>
-        <p style="font-style: italic; font-size: 66%; position: absolute; left: 0; top: 0; margin: 0;">My Umszki project
+        <header>
+        <p>
+            My Umszki project
         </p>
 
         <h1>Compilers</h1>
-    </header>
-
-    <div>
+        </header>
+    
         <nav>
             <a style="font-size: 1em;" class="active">About compilers</a>
             <a>How they work</a>
         </nav>
+
         <main>
             <q id="quote">computers are flattened sand with lightning inside</q>
-            <div class="paragraph">
-                <h2 style="text-align: right;">1. Introduction</h2>
+            
+                <h2>1. Introduction</h2>
                 <strong> Programming languages were created to allow developers to write human-readable source
                     code.</strong>
                 However,
@@ -54,10 +59,10 @@
                     compilers and interpreters. Finally, we’ll introduce examples of a few compilers of modern
                     programming
                     languages.</p>
-            </div>
+            
 
-            <div class="paragraph">
-                <h2 style="text-align: right;">2. Compilation Phases</h2>
+            
+                <h2>2. Compilation Phases</h2>
                 As we already mentioned, the compilation process <em>converts high-level source code to a low-level
                     machine
                     code</em>
@@ -75,16 +80,15 @@
                     <li>Code generation</li>
                 </ul>
                 In this section, we’ll discuss each phase in detail.
-            </div>
+            
 
-            <div class="paragraph">
-                <h3 style="text-align: right;">2.1. Lexical Analysis</h3>
+            
+                <h3>2.1. Lexical Analysis</h3>
 
                 The first stage of the compilation process is lexical analysis. During this phase, the compiler splits
                 source code into fragments called lexemes. A lexeme is an abstract unit of a specific language’s lexical
                 system. Let’s analyze a simple example:<br>
-                <code
-                    style="border-left:3px solid rgb(255, 255, 255);padding: 2px;background-color:rgb(70, 70, 70); color: white; display: inline-block; margin: 5px;">
+                <code>
                     String greeting = "hello";
                 </code>
                 <p>
@@ -107,9 +111,9 @@
                     source
                     code location data.
                 </p>
-            </div>
-            <div class="paragraph">
-                <h3 style="text-align: right;">2.2. Syntax Analysis</h3>
+            
+            
+                <h3>2.2. Syntax Analysis</h3>
 
                 During syntax analysis, the compiler uses a sequence of tokens generated in the first stage. Tokens are
                 used to create a structure called an <a
@@ -132,9 +136,9 @@
                         It generates an abstract syntax tree that the next stage uses.
                     </li>
                 </ol>
-            </div>
-            <div class="paragraph">
-                <h3 style="text-align: right;">2.3. Semantic Analysis</h3>
+            
+            
+                <h3>2.3. Semantic Analysis</h3>
 
                 <b>In this stage, the compiler uses an abstract syntax tree to detect any semantic errors,</b> for
                 example:
@@ -162,14 +166,13 @@
                     of
                     its
                     attributes.</p>
-            </div>
+            
 
-            <div class="paragraph">
-                <h3 style="text-align:right;">2.4. Intermediate Code Generation</h3> During the compilation process, a
+            
+                <h3>2.4. Intermediate Code Generation</h3> During the compilation process, a
                 compiler can generate one or more
                 intermediate code forms.
-                <q
-                    style="font-size:x-large; margin: 20px;padding: 5px; display: block; border-left: 3px solid rgb(70, 70, 70);">After
+                <q>After
                     syntax and
                     semantic analysis of the source program, many compilers
                     generate an explicit low-level or machine-like intermediate representation, which we can think of as
@@ -194,10 +197,10 @@
                     </li>
                 </ol>
 
-            </div>
+            
 
-            <div class="paragraph">
-                <h3 style="text-align: right;">
+            
+                <h3>
                     2.5. Optimization
                 </h3>
                 <em><strong>In the optimization phase, the compiler uses a variety of ways to enhance the efficiency of
@@ -239,30 +242,27 @@
                         + 10; x = x – 7; could be replaced with x = x + 3;
                     </li>
                 </ol>
-            </div>
+            
 
-            <div class="paragraph">
-                <h3 style="text-align: right;">2.6. Code Generation</h3>
+            
+                <h3>2.6. Code Generation</h3>
 
                 Finally, the compiler converts the optimized intermediate code to the machine code dedicated to the
                 target
                 machine. The final code should have the same meaning as source code and be efficient in terms of
                 memory and
                 CPU resource usage. Furthermore, the code generation process must also be efficient.
-            </div>
+            
 
-            <div class="paragraph">
-                <h3 style="text-align: right;">2.7. Practical Example</h3>
+            
+                <h3>2.7. Practical Example</h3>
 
                 In the below flowchart, we can see an example of the compilation process of a simple statement.
-                <div style="text-align: center;">
-                    <img src="res/Compilation_Flow.png" style="max-width: 100%; height: auto;" alt="Compilation Flow">
+                <div class="centeredimages">
+                    <img src="res/Compilation_Flow.png" style="max-width: 100%; height: auto; margin-bottom: -100px;" alt="Compilation Flow">
                 </div>
 
-            </div>
-            <div class="paragraph">
-
-                <h2 style="text-align: right;">3. Compiler vs. Interpreter</h2>
+                <h2>3. Compiler vs. Interpreter</h2>
 
                 As we already know, the compiler converts high-level source code to low-level code. Then, the target
                 machine
@@ -286,9 +286,9 @@
                     Let’s see a brief comparison between an interpreter and a compiler:
                 </p>
                 <table>
-                    <tr style="text-decoration: underline;">
-                        <td>COMPILER:</td>
-                        <td>INTERPRETER:</td>
+                    <tr>
+                        <td class="topcolumn">Compiler:</td>
+                        <td class="topcolumn">Interpreter:</td>
                     </tr>
                     <tr>
                         <td>1. Converts the code but doesn’t execute it.</td>
@@ -323,11 +323,11 @@
                             PowerShell.</td>
                     </tr>
                 </table>
-            </div>
-            <div class="paragraph">
-                <h3 style="text-align: right;">4. Compiler Examples</h3>
+            
+            
+                <h3>4. Compiler Examples</h3>
 
-                <h4 style="font-style: oblique;">4.1. Javac</h4>
+                <h4>4.1. Java</h4>
                 <p>
                     In Java, source code is first compiled to the bytecode by the javac compiler. Then, a Java Virtual
                     Machine
@@ -342,7 +342,7 @@
                     technologies.
                 </p>
 
-                <h4 style="font-style: oblique;">4.2. Mono</h4>
+                <h4>4.2. Mono</h4>
                 <p>
                     <a href="https://www.mono-project.com">Mono</a> is a toolset, including a C# programming language
                     compiler, for executing software dedicated to
@@ -358,7 +358,7 @@
                     it. Both the C# compiler and virtual machine belong to the Mono toolset.
                 </p>
 
-                <h4 style="font-style: oblique;">4.3. GNU Compiler Collection</h4>
+                <h4>4.3. GNU Compiler Collection</h4>
                 <p>
                     The GNU Compiler Collection (GCC) is a set of open-source compilers that belong to the GNU Project.
                     These
@@ -384,19 +384,31 @@
                     <li>Ada (gnat)</li>
                 </ul>
 
-                <a style="display: block; text-align: center;">To be continued...</a>
-            </div>
+                <hr>
+
+                Tests on elements:
+                <div class="testcontainer">
+                    <a>FIRST</a>
+                    <a>second</a>
+                    <a>third</a>
+                </div>
+
+
+                <a id="tobecontinued">To be continued...</a>
+
+                
+                
         </main>
+
         <div class="right">
             reserved
         </div>
-    </div>
 
-    <footer>
-        <a style="font-style :italic; font-size: 66%; justify-self:right;    margin: 0;">Vilmos Nargang</a>
-    </footer>
-
-    <script src="script.js"></script>
+        <footer>
+        <a>Vilmos Nargang</a>
+        </footer>
+        
+</div>
 </body>
 
 </html>

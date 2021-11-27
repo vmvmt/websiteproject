@@ -1,6 +1,5 @@
 body
 {
-    background-color: rgb(200, 200, 200);
     font-family: 'Roboto Mono', Courier, monospace;
     margin: 0;
     font-size: 1.0em;
@@ -8,56 +7,128 @@ body
 }
 
 a:link{
-    text-decoration: none;
+    color: white;
 }
-
+a:active{
+    color: black;
+}
+a:hover{
+    color: black;
+}
+a:visited{
+    color: grey;
+}
 *{
     box-sizing: border-box;
 }
 
+.grid-container > *
+{
+    border: 1px solid rgb(70,70,70);
+}
+.grid-container > footer{
+    border: none
+}
+
+
+/* media query section */
+
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    'header header header header header header' 
+    'left left middle middle right right' 
+    'footer footer footer footer footer footer';
+    grid-template-rows: 5vw auto 5vw;
+    
+}
+
+main{
+    width: auto;
+}
+.right{
+    width: 10vw;
+}
+nav{
+    width: 10vw;
+}
+    
+    
+
+@media (max-width: 800px) {
+    .grid-container  {
+      grid-template-areas: 
+        'header header header header header header' 
+        'left left left left left left'
+        'middle middle middle middle middle middle'
+        'right right right right right right' 
+        'footer footer footer footer footer footer';
+        grid-template-rows: 5vw auto auto auto 5vw;
+        
+    }
+    .nav a{
+        display: inline-block;
+    }
+    .right{
+        width: auto;
+    }
+    nav{
+        width: auto;
+    }
+    nav *{
+        float: left;
+    }
+    nav a{
+        display: inline-block;
+        width: auto;
+        height: 100%;
+        margin: auto;
+        padding: 1vw;
+    }
+    
+}
+
+/* End of media query section */
+
 header
 {
-    position: relative;
+    grid-area: header;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 8vw;
 }
 header h1
 {
+    font-variant: small-caps;
     margin: 0;
-
 }
-
-header::before
-{
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
-    opacity: 0.4;
-    background-size: cover;
-    background-image: url("./res/header.jpeg");
-    width:auto;
-    height:auto;
-    z-index:-3;
+header p{
+    font-style: italic;
+    font-size: 66%;
+    position: absolute; 
+    left: 0; top: 0; margin: 0;
 }
 
 main
 {
-    
-    border-left: 1px solid rgb(70, 70, 70);
-    border-right: 1px solid rgb(70, 70, 70);
+    grid-area: middle;
     background-color: rgb(220, 220, 220);
-    float: left;
-    height: 100%;
-    width:70%;
-    padding: 5px;
+    padding: 1vw;
+    
 }
+
 main #quote{
     text-align: center;
+}
+
+main q:not(#quote){
+    font-size:x-large;
+    margin: 20px;
+    padding: 5px;
+    display: block;
+    border-left: 3px solid rgb(70, 70, 70);
+    text-align: justify;
 }
 
 nav a.active
@@ -65,6 +136,7 @@ nav a.active
     color: white;
     background-color: rgb(100, 100, 100);
 }
+
 nav a:hover:not(.active)
 {
     background-color: rgb(140, 140, 140);
@@ -72,46 +144,49 @@ nav a:hover:not(.active)
 
 nav
 {
-    float: left;
-    overflow: hidden;
-    margin: 0;
+    grid-area: left;
     text-align: center;
-    width: 15%;
-    height: 100%;
 }
 
 nav a
 {
     font-size: 0.8em;
-    float: none;
-    overflow: hidden;
-    display: block;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4vw;
 }
     
 .right
 {
-    float:left;
-    text-align: right;
-    height: 100%;
-    width:15%;
+    grid-area: right;
     padding: 5px;
 }
+
 footer
 {
+    grid-area: footer;
     color: white;
-    width: 100%;
-    display: flex;
+    display: block;
     align-items: flex-end;
     justify-content: right;
-    height: 6vw;
     background-color: rgb(35, 35, 35);
 }
+footer a{
+    font-style :italic;
+    font-size: 66%;
+    justify-self:right;
+    margin: 0;
+}
 
-.paragraph
-{
-    padding: 5px 6px;
-    display: block;
+h2,
+h3,
+h4{
+text-align: right;
+}
+
+h4{
+    font-style: oblique;
 }
 
 table td{
@@ -119,13 +194,48 @@ table td{
     width: 50%;
     margin: 0;
 }
-table tr{
+
+table tr:first-child{
     vertical-align: top;
+    text-decoration: underline;
+}
+table .topcolumn{
+    text-align: center;
+    text-transform: uppercase;
 }
 
-footer::after
+code{
+    border-left: 3px solid rgb(255, 255, 255);
+    background-color: #464646;
+    padding: 2px;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    text-align: left;
+}
+
+.centeredimages{
+text-align: center;
+}
+
+.testcontainer > *{
+    display: block;
+}
+.testcontainer :nth-child(1)
 {
-    content: "";
-    display: table;
-    clear: both;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+.testcontainer :nth-child(2)
+{
+    text-transform: capitalize;
+    text-decoration: line-through;
+}
+.testcontainer :nth-child(3)
+{
+    text-decoration: overline;
+}
+
+hr{
+color: RGB(70,70,70);
 }
